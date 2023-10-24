@@ -3,11 +3,13 @@ import numpy as np
 
 
 class Atom:
-    def __init__(self, weight, radius, position, charge=1):
+    def __init__(self, weight, radius, position, charge=1, index=None):
         self.weight = weight
+        self.index = index
         self.radius = radius
         self.position = position
         self.charge = charge
+        self.num_neighbors = 0
 
     def set_charge(self, charge):
         self.charge = charge

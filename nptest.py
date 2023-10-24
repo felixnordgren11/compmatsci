@@ -29,11 +29,14 @@ def potential_energy(pos, sigma, epsilon):
             V += lenny_j(r_ij[i, j], s, e)
     return V
 
+
+sigma = 2.644
+epsilon = 0.345
+rc = 
+
 V_values = np.zeros((len(filenames), 1))
 for k in range(len(filenames)):
     rows, cols = positions[k].shape
-    sigma = 2.644
-    epsilon = 0.345 
     V_f = potential_energy(positions[k], sigma, epsilon)/rows
     V_values[k] = V_f
 

@@ -10,8 +10,8 @@ class Lattice:
     def _populate_from_file(self, filename):
         with open(filename, 'r') as f:
             for line in f:
-                element, x, y, z = line.split()
-                atom = Atom(element, (int(x), int(y), int(z)))
+                x, y, z = line.split()
+                atom = Atom((int(x), int(y), int(z)))
                 self.add_atom(atom)
 
     def add_atom(self, atom):
@@ -35,3 +35,5 @@ class Lattice:
             
 lattice = Lattice("lattice_positions.txt")
 lattice.display()
+rel_pos = Lattice.relative_pos()
+print(rel_pos)
