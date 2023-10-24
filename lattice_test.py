@@ -3,11 +3,16 @@ from atoms import Atom
 
 
 class Lattice:
-    
-    def __init__(self, structure):
+    def __init__(self, filename):
         self.atoms = []
-        self.structure = structure
+        self._populate_from_file(filename)
 
+    def _populate_from_file(self, filename):
+        with open(filename, 'r') as f:
+            for line in f:
+                element, x, y, z = line.split()
+                atom = Atom(element, (int(x), int(y), int(z)))
+                self.add_atom(atom)
 
     def add_atom(self, atom):
         self.atoms.append(atom)
@@ -27,10 +32,6 @@ class Lattice:
     def display(self):
         for atom in self.atoms:
             print(atom)
-
-# Example usage:
-lattice_size = 3
-lattice = Lattice(lattice_size, )
-relative_positions = lattice.atoms
-print(relative_positions)
-        
+            
+lattice = Lattice("lattice_positions.txt")
+lattice.display()
